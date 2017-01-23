@@ -60,7 +60,7 @@ class ExternalRenderingOperator(bpy.types.Operator):
                              socket.SOCK_DGRAM) # UDP
 
         # Send the notification message through UDP
-        sock.sendto(bytes(self.message, "UTF-8"), (self.udp_ip, self.udp_port))
+        sock.sendto(bytes(self.message + "\n", "UTF-8"), (self.udp_ip, self.udp_port))
 
         # Indicate success to blender
         return {'FINISHED'}
